@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTHDOMAIN,
-  projectId: process.env.REACT_APP_PROJECTID,
-  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-  appId: process.env.REACT_APP_APPID,
-  measurementId: process.env.REACT_APP_MEASUREMENTID
+  apiKey: "AIzaSyDCcErBWKh2QIrF1nU6YBCVi1RFK3PPN1U",
+  authDomain: "project-ccc-31062.firebaseapp.com",
+  projectId: "project-ccc-31062",
+  storageBucket: "project-ccc-31062.firebasestorage.app",
+  messagingSenderId: "1065930708696",
+  appId: "1:1065930708696:web:a6e75dc4fc6176d2c9e9ad",
+  measurementId: "G-YWMJ4RZFF1"
 };
 
 // Initialize Firebase
