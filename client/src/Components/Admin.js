@@ -40,7 +40,7 @@ export default function Admin() {
     e.preventDefault();
     try {
       const updatedFeedback = { ...Feedback, TimeAdded: new Date() };
-      await axios.post("http://localhost:3001/AddNewFeedback", { ...updatedFeedback })
+      await axios.post("https://ccc-bsp-server.vercel.app/AddNewFeedback", { ...updatedFeedback })
         .then(result => {
           console.log(result)
           alert('Thank You For Your Valuable Time & Feedback !')
@@ -55,13 +55,13 @@ export default function Admin() {
   const [AllFeedback, setAllFeedback] = useState();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/GetFeedback')
+    axios.get('https://ccc-bsp-server.vercel.app/GetFeedback')
       .then(result => setAllFeedback(result.data))
       .catch(error => console.log(error))
   }, [])
 
   // const DeleteFeedback = async (id) => {
-  //   axios.delete('http://localhost:3001/DeleteFeedback/' + id)
+  //   axios.delete('https://ccc-bsp-server.vercel.app/DeleteFeedback/' + id)
   //     .then(result => {
   //       console.log(result)
   //       window.location.reload();
@@ -78,7 +78,7 @@ export default function Admin() {
   const AddAdmin = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/Register', { username, password })
+      await axios.post('https://ccc-bsp-server.vercel.app/Register', { username, password })
         .then(result => {
           alert('User Registration Successful')
           console.log(result)
@@ -91,7 +91,7 @@ export default function Admin() {
 
   const CheckAdmin = async (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/Login', { username, password })
+    axios.post('https://ccc-bsp-server.vercel.app/Login', { username, password })
       .then(result => {
         if (result.data.token) {
           localStorage.setItem('token', result.data.token)
@@ -131,7 +131,7 @@ export default function Admin() {
   const AddStaffUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/StaffRegister', { Staffusername, Staffpassword })
+      await axios.post('https://ccc-bsp-server.vercel.app/StaffRegister', { Staffusername, Staffpassword })
         .then(result => {
           alert('Staff Registration Successful')
           console.log(result)
@@ -144,7 +144,7 @@ export default function Admin() {
 
   const CheckStaff = async (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/StaffLogin', { Staffusername, Staffpassword })
+    axios.post('https://ccc-bsp-server.vercel.app/StaffLogin', { Staffusername, Staffpassword })
       .then(result => {
         if (result.data.token) {
           localStorage.setItem('Stafftoken', result.data.token)
