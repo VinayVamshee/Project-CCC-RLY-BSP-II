@@ -4,8 +4,8 @@ importScripts('https://www.gstatic.com/firebasejs/10.13.2/firebase-messaging-com
 const firebaseConfig = {
   apiKey: "AIzaSyDCcErBWKh2QIrF1nU6YBCVi1RFK3PPN1U",
   authDomain: "project-ccc-31062.firebaseapp.com",
-  projectId: "project-ccc-31062.firebase.app.com",
-  storageBucket: "project-ccc-31062.appspot.com",
+  projectId: "project-ccc-31062",
+  storageBucket: "project-ccc-31062.firebasestorage.app",
   messagingSenderId: "1065930708696",
   appId: "1:1065930708696:web:a6e75dc4fc6176d2c9e9ad",
   measurementId: "G-YWMJ4RZFF1"
