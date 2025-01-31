@@ -12,7 +12,7 @@ export default function Notice() {
       const fcmtoken = await requestNotificationPermission(messaging, vapidKey); // Get token from the centralized function
       if (fcmtoken) {
         const userId = "sharedUserAccount"; // Since multiple users share the same account
-        await axios.post("https://ccc-bsp-server.vercel.app/save-fcm-token", { userId, fcmToken: fcmtoken });
+        await axios.post("http://localhost:3001/save-fcm-token", { userId, fcmToken: fcmtoken });
       }
     };
     saveToken();
@@ -54,7 +54,7 @@ export default function Notice() {
     try {
       const updatedNotice = { ...Notice, TimeAdded: new Date().toLocaleString() };
       setNotice(updatedNotice);
-      await axios.post("https://ccc-bsp-server.vercel.app/AddNewNotice", { ...updatedNotice })
+      await axios.post("http://localhost:3001/AddNewNotice", { ...updatedNotice })
         .then(result => {
           alert('New Notice Added')
           window.location.reload();
@@ -68,13 +68,13 @@ export default function Notice() {
   const [AllNotice, setAllNotice] = useState([]);
 
   useEffect(() => {
-    axios.get('https://ccc-bsp-server.vercel.app/GetNotice')
+    axios.get('http://localhost:3001/GetNotice')
       .then(result => setAllNotice(result.data))
       .catch(error => console.log(error))
   }, [])
 
   const DeleteNotice = async (id) => {
-    axios.delete('https://ccc-bsp-server.vercel.app/DeleteNotice/' + id)
+    axios.delete('http://localhost:3001/DeleteNotice/' + id)
       .then(result => {
         window.location.reload();
       })
@@ -88,7 +88,7 @@ export default function Notice() {
   const AddNewNoticeCategory = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://ccc-bsp-server.vercel.app/AddNewNoticeCategory", { ...NoticeCategory })
+      await axios.post("http://localhost:3001/AddNewNoticeCategory", { ...NoticeCategory })
         .then(result => {
           alert('New Category Added')
           window.location.reload();
@@ -101,12 +101,12 @@ export default function Notice() {
 
   const [AllNoticeCategory, setAllNoticeCategory] = useState([]);
   useEffect(() => {
-    axios.get('https://ccc-bsp-server.vercel.app/GetNoticeCategory')
+    axios.get('http://localhost:3001/GetNoticeCategory')
       .then(result => setAllNoticeCategory(result.data))
   }, [])
 
   const DeleteNoticeCategory = async (id) => {
-    axios.delete('https://ccc-bsp-server.vercel.app/DeleteNoticeCategory/' + id)
+    axios.delete('http://localhost:3001/DeleteNoticeCategory/' + id)
       .then(result => {
         window.location.reload();
       })
