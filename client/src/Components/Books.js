@@ -45,7 +45,7 @@ export default function Books() {
     try {
       const updatedBooks = { ...Books, TimeAdded: new Date() };
       setBooks(updatedBooks);
-      await axios.post("http://localhost:3001/AddNewBook", { ...updatedBooks })
+      await axios.post("https://ccc-bsp-server.vercel.app/AddNewBook", { ...updatedBooks })
         .then(result => {
           console.log(result)
           alert('New Book Added')
@@ -60,7 +60,7 @@ export default function Books() {
   const AddNewCategory = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/AddNewCategory", { ...Category })
+      await axios.post("https://ccc-bsp-server.vercel.app/AddNewCategory", { ...Category })
         .then(result => {
           console.log(result)
           alert('New Category Added')
@@ -98,19 +98,19 @@ export default function Books() {
   const [AllCategory, setAllCategory] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/GetBooks')
+    axios.get('https://ccc-bsp-server.vercel.app/GetBooks')
       .then(result => setAllBooks(result.data))
       .catch(error => console.log(error))
   }, [])
 
   useEffect(() => {
-    axios.get('http://localhost:3001/GetCategory')
+    axios.get('https://ccc-bsp-server.vercel.app/GetCategory')
       .then(result => setAllCategory(result.data))
       .catch(error => console.log(error))
   }, [])
 
   const DeleteBook = async (id) => {
-    axios.delete('http://localhost:3001/DeleteBook/' + id)
+    axios.delete('https://ccc-bsp-server.vercel.app/DeleteBook/' + id)
       .then(result => {
         console.log(result)
         window.location.reload();
@@ -119,7 +119,7 @@ export default function Books() {
   }
 
   const DeleteCategory = async (id) => {
-    axios.delete('http://localhost:3001/DeleteCategory/' + id)
+    axios.delete('https://ccc-bsp-server.vercel.app/DeleteCategory/' + id)
       .then(result => {
         console.log(result)
         window.location.reload();
