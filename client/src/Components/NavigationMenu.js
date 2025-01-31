@@ -60,7 +60,7 @@ export default function NavigationMenu() {
     const AddNewOtherDropDown = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3001/AddNewOtherDropDown', { ...OtherDropDown })
+            await axios.post('https://ccc-bsp-server.vercel.app/AddNewOtherDropDown', { ...OtherDropDown })
                 .then(result => {
                     console.log(result)
                     alert('Added')
@@ -75,13 +75,13 @@ export default function NavigationMenu() {
     const [AllOtherDropDown, setAllOtherDropDown] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/GetOtherDropDown')
+        axios.get('https://ccc-bsp-server.vercel.app/GetOtherDropDown')
             .then(result => setAllOtherDropDown(result.data))
             .catch(error => console.log(error))
     }, [])
 
     const DeleteOtherDropDown = async (id) => {
-        axios.delete('http://localhost:3001/DeleteOtherDropDown/' + id)
+        axios.delete('https://ccc-bsp-server.vercel.app/DeleteOtherDropDown/' + id)
             .then(result => {
                 console.log(result)
                 window.location.reload();
