@@ -89,12 +89,18 @@ export default function NavigationMenu() {
             .catch(error => console.log(error))
     }
 
+    const [IsToggleCollapseOpen, setIsToggleCollapseOpen] = useState(false);
+
+    const NavigationToggleCollapse = () => {
+        setIsToggleCollapseOpen(!IsToggleCollapseOpen);
+    }
+
 
     return (
         <div className='NavigationMenu'>
 
             <div className='NavigationToggle'>
-                <button className="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavigationToggle" aria-expanded="false" aria-controls="collapseNavigationToggle">
+                <button className={`btn ${IsToggleCollapseOpen ? 'rotate' : ''}`} onClick={NavigationToggleCollapse} type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavigationToggle" aria-expanded="false" aria-controls="collapseNavigationToggle">
                     <img src='https://i.pinimg.com/originals/26/9d/d1/269dd16fa1f5ff51accd09e7e1602267.png' alt='...' />
                 </button>
                 <div className="collapse" id="collapseNavigationToggle">
@@ -106,37 +112,43 @@ export default function NavigationMenu() {
                         <Link to='/Videos' className='btn btn-Link-Toggle'><img src='https://cdn-icons-png.flaticon.com/512/4404/4404094.png' alt='...' />Technical & Safety Videos</Link>
                         <Link to='/Gallery' className='btn btn-Link-Toggle'><img src={GalleryIcon} alt='...' />Gallery</Link>
 
-                        <ul className="dropdown-menu">
-                            {
-                                AllOtherDropDown && AllOtherDropDown.map((Element, idx) => {
-                                    return (
-                                        <li className='d-flex my-1' key={idx}><a className="dropdown-item" href={Element.Link} target='_blank' rel="noreferrer">{Element.Name}</a>
-                                            {
-                                                IsLoggedIn ?
-                                                    <button className='btn btn-outline-danger mx-2' onClick={() => DeleteOtherDropDown(Element._id)}>Delete</button>
-                                                    :
-                                                    null
-                                            }
+                        <div className="dropend">
+                            <button className="btn btn-Link-Toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src='https://static-00.iconduck.com/assets.00/other-icon-1024x1024-vi0erzei.png' alt='...' />Other
+                            </button>
 
+                            <ul className="dropdown-menu">
+                                {
+                                    AllOtherDropDown && AllOtherDropDown.map((Element, idx) => {
+                                        return (
+                                            <li className='d-flex my-1' key={idx}><a className="dropdown-item" href={Element.Link} target='_blank' rel="noreferrer">{Element.Name}</a>
+                                                {
+                                                    IsLoggedIn ?
+                                                        <button className='btn btn-outline-danger mx-2' onClick={() => DeleteOtherDropDown(Element._id)}>Delete</button>
+                                                        :
+                                                        null
+                                                }
+
+                                            </li>
+                                        )
+                                    })
+                                }
+                                {
+                                    IsLoggedIn ?
+                                        <li className='AddNew'>
+                                            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewOtherModal">
+                                                Add
+                                            </button>
                                         </li>
-                                    )
-                                })
-                            }
-                            {
-                                IsLoggedIn ?
-                                    <li className='AddNew'>
-                                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewOtherModal">
-                                            Add
-                                        </button>
-                                    </li>
-                                    :
-                                    null
-                            }
+                                        :
+                                        null
+                                }
 
-                        </ul>
+                            </ul>
+                        </div>
 
                         <button className='btn btn-Link-Toggle' onClick={ChangeTheme}><img src={ThemeIcon} alt='...' />Theme</button>
-                        <Link to='/Admin' className='btn btn-Link-Toggle'><img src='https://cdn-icons-png.flaticon.com/512/560/560199.png' alt='...' />Admin</Link>
+                        <Link to='/Admin' className='btn btn-Link-Toggle'><img src='https://cdn-icons-png.flaticon.com/512/560/560199.png' alt='...' />Login</Link>
                     </div>
                 </div>
             </div>
@@ -184,7 +196,7 @@ export default function NavigationMenu() {
             </div>
 
             <button className='btn btn-Link' onClick={ChangeTheme}><img src={ThemeIcon} alt='...' />Theme</button>
-            <Link to='/Admin' className='btn btn-Link btn-outline-danger'><img src='https://cdn-icons-png.flaticon.com/512/560/560199.png' alt='...' />Admin</Link>
+            <Link to='/Admin' className='btn btn-Link btn-warning'><img src='https://cdn-icons-png.flaticon.com/512/560/560199.png' alt='...' />Login</Link>
             
 
             <div className="modal fade" id="AddNewOtherModal" tabIndex="-1" aria-labelledby="AddNewOtherModalLabel" aria-hidden="true">

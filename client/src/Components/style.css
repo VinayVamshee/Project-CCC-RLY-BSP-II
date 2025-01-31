@@ -2,7 +2,7 @@
   scroll-behavior: smooth;
 }
 .App {
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--App-BG-color);
 }
 .light-theme {
@@ -95,7 +95,7 @@
 }
 .Home .carousel img {
   object-fit: cover;
-  height: 750px;
+  height: 78vh;
 }
 .Home .carousel h5 {
   border-bottom: 1px solid black;
@@ -132,7 +132,7 @@
   width: 600px;
 }
 .Contact .Search-results {
-  max-height: 680px;
+  max-height: 78vh;
   overflow: auto;
 }
 .Contact .Search-results .fixed-header {
@@ -228,6 +228,15 @@
 .Gallery .Gallery-card {
   margin-top: 10px;
 }
+.Gallery .Gallery-card .col .card:hover {
+  transition: 0.2s ease-in-out;
+}
+.Gallery .Gallery-card .col .card:hover {
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.437);
+  transform: scale(1.2);
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
 .Gallery .Gallery-card a {
   text-decoration: none;
 }
@@ -272,23 +281,36 @@
   justify-content: space-between;
   padding: 5px;
 }
+.Books .card-body .AllBooks .books-button button {
+  text-align: left;
+  margin-right: 2px;
+}
+.Books .card-body .AllBooks .books-button a {
+  text-align: left;
+  margin-right: 2px;
+  text-decoration: none;
+  color: #00aaff;
+}
+.Books .card-body .AllBooks .books-button a:hover {
+  text-decoration: underline;
+  color: blue;
+}
 .Books .Books-Categories {
   margin: 5px;
   padding: 10px;
   border-radius: 10px;
   border: 0.5px solid black;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
 }
 .Books .Books-Categories .Category {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  white-space: nowrap;
   gap: 10px;
-  width: 100%;
 }
 .Books .Books-Categories .Category .btn-category {
   background-color: var(--Category-BG-color);
@@ -298,6 +320,9 @@
 }
 .Books .Books-Categories .Category .collapse .card-body {
   padding: 0px;
+}
+.Books .Books-Categories .Category .collapse .card-body button {
+  text-align: left;
 }
 .Books .Books-Categories .Category .btn-category:hover {
   background-color: var(--Category-BG-hover-color);
@@ -319,7 +344,7 @@
 }
 .Videos .card-body {
   margin-top: 10px;
-  max-height: 680px;
+  max-height: 78vh;
   overflow: auto;
 }
 .Videos .Videos-Categories {
@@ -352,6 +377,15 @@
   transform: scale(0.9);
   transition: 0.5s ease-in-out;
 }
+.Videos .col .card{
+  transition: 0.2s ease-in-out;
+}
+.Videos .col .card:hover{
+  cursor: pointer;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.437);
+  transform: scale(1.2);
+  transition: 0.2s ease-in-out;
+}
 .Notice {
   display: flex;
   flex-direction: column;
@@ -375,6 +409,29 @@
   padding: 5px;
   border-radius: 5px;
 }
+.Notice .Notice-Categories {
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  border: .5px solid black;
+  border-radius: 10px;
+}
+.Notice .Notice-Categories .Category {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Notice .Notice-Categories .btn-category {
+  background-color: var(--Category-BG-color);
+  animation: FadeIn 1.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+.Notice .Notice-Categories .btn-category:hover {
+  background-color: var(--Category-BG-hover-color);
+  transition: 0.5s ease-in-out;
+}
 .Notice .card {
   width: 100%;
   padding: 10px;
@@ -382,10 +439,12 @@
   background-color: var(--Navigation-BG-color);
 }
 .PopIn {
-  animation: PopIn 1.5s ease-in-out;
+  opacity: 0;
+  animation: PopIn 1.5s forwards;
 }
 .PopRight {
-  animation: PopRight 2s ease-in-out;
+  opacity: 0;
+  animation: PopRight 2s forwards;
 }
 .Notice .card .card-title {
   font-family: "Times New Roman", Times, serif;
@@ -405,12 +464,36 @@
   overflow: auto;
 }
 .Admin .AdminProfile .Image img {
-  height: 680px;
+  height: 60vh;
+  border-radius: 20px;
+  filter: drop-shadow(7px 7px 7px rgba(70, 70, 70, 0.503));
+  border: none;
 }
 .Admin .AdminProfile {
+  font-family: 'Times New Roman', Times, serif;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
+}
+.Admin h1 {
+  font-weight: bolder;
+}
+.Admin h1, h3, h2{
+  font-style: italic;
+}
+.Admin .DevelopedBy {
+  text-align: end;
+  color: var(--text-color);
+  animation: PopRight 2s forwards;
+}
+.Admin .DevelopedBy a {
+  text-decoration: none;
+  color: #00aaff;
+}
+.Admin .DevelopedBy a:hover {
+  text-decoration: underline;
+  color: purple;
 }
 .Admin .AddNew .modal-body textarea {
   height: auto;
@@ -423,10 +506,48 @@
   width: 100%;
   padding: 5px;
 }
+.Feedbacks {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: fit-content;
+}
+.Feedbacks p {
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(255, 0, 0);
+  font-size: larger;
+  background-color:#56565630;
+  padding: 5px;
+  border-radius: 10px;
+}
+.Feedbacks button {
+  width: fit-content;
+}
 .Admin .Feedbacks .card-header {
   background-color: var(--Navigation-BG-color);
   margin-top: 10px;
 }
+
+.loading-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 @keyframes FadeIn {
   from {
@@ -443,18 +564,23 @@
 @keyframes PopIn {
   0% {
     opacity: 0;
-    transform: translateY(-1000px);
+    transform: translateY(-500px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(10px) scaleY(1.1);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scaleY(1);
   }
 }
+
 
 @keyframes PopRight {
   0% {
     opacity: 0;
-    transform: translateX(-1000px);
+    transform: translateX(-500px);
   }
   100% {
     opacity: 1;
@@ -480,7 +606,10 @@
 }
 @media screen and (max-width: 600px) {
   *{
-    font-size: large;
+    font-size:medium;
+  }
+  .App {
+    padding-bottom: 2px;
   }
   .NavigationMenu {
     height: fit-content;
@@ -499,6 +628,11 @@
   .NavigationMenu .NavigationToggle img {
     height: 30px;
     margin-right: 10px;
+    transition: .3s ease-in-out;
+  }
+  .NavigationMenu .NavigationToggle .rotate img {
+    transform: rotate(90deg);
+    transition: .3s ease-in-out;
   }
   .NavigationMenu .btn-Link {
     display: none;
@@ -515,5 +649,8 @@
     justify-content: center;
     align-items: center;
 
+  }
+  .Books .card-body .AllBooks .books-button p {
+    font-size: smaller;
   }
 }

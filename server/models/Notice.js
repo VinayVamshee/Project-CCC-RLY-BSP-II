@@ -9,6 +9,9 @@ const NoticeSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    Category: {
+        type: String,
+    },
     TimeAdded: {
         type: String
     }

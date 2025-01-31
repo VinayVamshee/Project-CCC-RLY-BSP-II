@@ -13,16 +13,10 @@ import Admin from "./Components/Admin";
 
 
 const ThemeStored = () => {
-  let Theme = localStorage.getItem('Theme');
-  if (Theme) {
-    return (
-      JSON.parse(localStorage.getItem('Theme'))
-    )
-  }
-  else {
-    return [];
-  }
-}
+  const storedTheme = localStorage.getItem('Theme');
+  return storedTheme ? JSON.parse(storedTheme) : 'light-theme';
+};
+
 
 function App() {
 
@@ -39,7 +33,7 @@ function App() {
   checkTokenExpiration();
 
   // eslint-disable-next-line
-  const [Theme, setTheme] = useState(ThemeStored);
+  const [Theme, setTheme] =  useState(() => ThemeStored());;
   useEffect(() => {
     localStorage.setItem('Theme', JSON.stringify(Theme))
   }, [Theme]);
