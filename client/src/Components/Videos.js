@@ -43,7 +43,7 @@ export default function Videos() {
     try {
       const updatedVideos = { ...Videos, TimeAdded: new Date() };
       setVideos(updatedVideos);
-      await axios.post("https://ccc-bsp-server.vercel.app/AddNewVideo", { ...updatedVideos })
+      await axios.post("http://localhost:3001/AddNewVideo", { ...updatedVideos })
         .then(result => {
           console.log(result)
           alert('New Video Added')
@@ -58,7 +58,7 @@ export default function Videos() {
   const AddNewVideoCategory = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://ccc-bsp-server.vercel.app/AddNewVideoCategory", { ...Category })
+      await axios.post("http://localhost:3001/AddNewVideoCategory", { ...Category })
         .then(result => {
           console.log(result)
           alert('New Category Added')
@@ -74,19 +74,19 @@ export default function Videos() {
   const [AllVideoCategory, setAllVideoCategory] = useState([]);
 
   useEffect(() => {
-    axios.get('https://ccc-bsp-server.vercel.app/GetVideos')
+    axios.get('http://localhost:3001/GetVideos')
       .then(result => setAllVideos(result.data))
       .catch(error => console.log(error))
   }, [])
 
   useEffect(() => {
-    axios.get('https://ccc-bsp-server.vercel.app/GetVideoCategory')
+    axios.get('http://localhost:3001/GetVideoCategory')
       .then(result => setAllVideoCategory(result.data))
       .catch(error => console.log(error))
   }, [])
 
   const DeleteVideo = async (id) => {
-    axios.delete('https://ccc-bsp-server.vercel.app/DeleteVideo/' + id)
+    axios.delete('http://localhost:3001/DeleteVideo/' + id)
       .then(result => {
         console.log(result)
         window.location.reload();
@@ -95,7 +95,7 @@ export default function Videos() {
   }
 
   const DeleteVideoCategory = async (id) => {
-    axios.delete('https://ccc-bsp-server.vercel.app/DeleteVideoCategory/' + id)
+    axios.delete('http://localhost:3001/DeleteVideoCategory/' + id)
       .then(result => {
         console.log(result)
         window.location.reload();
@@ -137,9 +137,9 @@ export default function Videos() {
       <div className='Search'>
         <input value={SearchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Search Video ...' />
       </div>
-      {
+      {/* {
         IsStaffLoggedIn ?
-          <>
+          <> */}
             <div className='Videos-Categories'>
               {
                 AllVideoCategory.map((Element, idx) => {
@@ -285,10 +285,10 @@ export default function Videos() {
                 </div>
               </div>
             </div>
-          </>
+          {/* </>
           :
           null
-      }
+      } */}
     </div>
   )
 }
