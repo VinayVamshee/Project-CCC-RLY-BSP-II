@@ -141,9 +141,9 @@ export default function Contact() {
                 <input onChange={(e) => setSearchQuery(e.target.value)} placeholder='Search All ...' />
             </div>
 
-            {
+            {/* {
                 IsStaffLoggedIn ?
-                    <>
+                    <> */}
                         <div className='Search-results'>
                             <table className="table">
                                 <thead className='fixed-header'>
@@ -402,10 +402,10 @@ export default function Contact() {
                                 </div>
                             </div>
                         </div>
-                    </>
+                    {/* </>
                     :
                     null
-            }
+            } */}
 
         </div>
     )
