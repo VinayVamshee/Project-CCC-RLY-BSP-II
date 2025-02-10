@@ -91,9 +91,9 @@ export default function Gallery() {
         <input value={SearchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Search Gallery ...' />
       </div>
 
-      {
+      {/* {
         IsStaffLoggedIn ?
-          <>
+          <> */}
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 Gallery-card">
               {
                 AllCard && AllCard.length > 0 ?  (
@@ -169,10 +169,10 @@ export default function Gallery() {
                 </div>
               </div>
             </div>
-          </>
+          {/* </>
           :
           null
-      }
+      } */}
     </div>
   )
 }
