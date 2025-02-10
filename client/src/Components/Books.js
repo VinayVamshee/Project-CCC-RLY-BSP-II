@@ -156,9 +156,9 @@ export default function Books() {
         <input value={SearchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Search Book ...' />
       </div>
 
-      {
+      {/* {
         IsStaffLoggedIn ?
-          <>
+          <> */}
             <div className='Books-Categories'>
               {
                 AllCategory.map((Element, idx) => {
@@ -334,10 +334,10 @@ export default function Books() {
                 </div>
               </div>
             </div>
-          </>
+          {/* </>
           :
           null
-      }
+      } */}
 
 
     </div>
