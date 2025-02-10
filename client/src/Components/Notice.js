@@ -128,9 +128,9 @@ export default function Notice() {
     <div className='Notice'>
       <h1 className='Heading'>Notice</h1>
 
-      {
+      {/* {
         IsStaffLoggedIn ?
-          <>
+          <> */}
 
             <div className='Notice-Categories'>
               {
@@ -250,10 +250,10 @@ export default function Notice() {
 
 
             </div>
-          </>
+          {/* </>
           :
           null
-      }
+      } */}
 
     </div>
   )
