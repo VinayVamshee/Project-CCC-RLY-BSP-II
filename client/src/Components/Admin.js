@@ -165,14 +165,14 @@ export default function Admin() {
     <div className='Admin'>
       <div className='AddNew'>
 
-        {/* {
+         {
           IsStaffLoggedIn ?
             <button className='btn btn-danger' onClick={StaffLogout}>Staff Logout</button>
             :
             <button type="button" className="btn btn-info" data-bs-toggle="modal" data-bs-target="#StaffLoginModal">
               Staff Login
             </button>
-        } */}
+        } 
 
 
         {
