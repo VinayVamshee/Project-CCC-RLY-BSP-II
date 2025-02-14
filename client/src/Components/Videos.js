@@ -43,7 +43,7 @@ export default function Videos() {
     try {
       const updatedVideos = { ...Videos, TimeAdded: new Date() };
       setVideos(updatedVideos);
-      await axios.post("http://localhost:3001/AddNewVideo", { ...updatedVideos })
+      await axios.post("https://ccc-bsp-server.vercel.app/AddNewVideo", { ...updatedVideos })
         .then(result => {
           console.log(result)
           alert('New Video Added')
@@ -58,7 +58,7 @@ export default function Videos() {
   const AddNewVideoCategory = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/AddNewVideoCategory", { ...Category })
+      await axios.post("https://ccc-bsp-server.vercel.app/AddNewVideoCategory", { ...Category })
         .then(result => {
           console.log(result)
           alert('New Category Added')
@@ -74,19 +74,19 @@ export default function Videos() {
   const [AllVideoCategory, setAllVideoCategory] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/GetVideos')
+    axios.get('https://ccc-bsp-server.vercel.app/GetVideos')
       .then(result => setAllVideos(result.data))
       .catch(error => console.log(error))
   }, [])
 
   useEffect(() => {
-    axios.get('http://localhost:3001/GetVideoCategory')
+    axios.get('https://ccc-bsp-server.vercel.app/GetVideoCategory')
       .then(result => setAllVideoCategory(result.data))
       .catch(error => console.log(error))
   }, [])
 
   const DeleteVideo = async (id) => {
-    axios.delete('http://localhost:3001/DeleteVideo/' + id)
+    axios.delete('https://ccc-bsp-server.vercel.app/DeleteVideo/' + id)
       .then(result => {
         console.log(result)
         window.location.reload();
@@ -95,7 +95,7 @@ export default function Videos() {
   }
 
   const DeleteVideoCategory = async (id) => {
-    axios.delete('http://localhost:3001/DeleteVideoCategory/' + id)
+    axios.delete('https://ccc-bsp-server.vercel.app/DeleteVideoCategory/' + id)
       .then(result => {
         console.log(result)
         window.location.reload();
