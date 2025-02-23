@@ -10,6 +10,7 @@ import Gallery from './Components/Gallery';
 import Videos from "./Components/Videos";
 import { jwtDecode } from 'jwt-decode';
 import Admin from "./Components/Admin";
+import { Analytics } from '@vercel/analytics/react';
 
 
 const ThemeStored = () => {
@@ -42,6 +43,7 @@ function App() {
     <div className={`App ${Theme}`}>
       <Router>
         <NavigationMenu />
+  <Analytics />
         <Routes>
           <Route path='/' exact element={<Home />} />
           <Route path='/Contact' element={<Contact/>}/>
